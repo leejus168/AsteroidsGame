@@ -1,5 +1,6 @@
 Spaceship bob = new Spaceship();
 Star[] sam  =  new Star[100];
+ArrayList<Asteroid> joe = new ArrayList<Asteroid>();
 public void setup() 
 {
   background(0);
@@ -7,6 +8,10 @@ public void setup()
   for (int i = 0; i < sam.length; i++)
   {
    sam[i] = new Star(); 
+  }
+  for (int k = 0; k<10 ;k++)
+  {
+    joe.add(new Asteroid());
   }
 }
 public void draw() 
@@ -17,6 +22,16 @@ public void draw()
   for(int j = 0; j< sam.length; j++)
   {
    sam[j].show(); 
+  }
+  for (int l = 0; l < joe.size(); l++)
+  {
+   joe.get(l).move();
+   joe.get(l).show();
+   float distance = dist((float)joe.get(l).getX(),(float)joe.get(l).getY(),(float)bob.getX(),(float)bob.getY());
+   if(distance < 15)
+   {
+     joe.remove(l);
+   }
   }
 }
 public void keyPressed()
